@@ -48,15 +48,18 @@ export default function Hero() {
       (multiplePokemonQuery.data && multiplePokemonQuery.data.length > 0)
     ) {
       return (
-        <div className="mt-4 max-h-96 overflow-y-auto border border-gray-700 rounded-lg bg-gray-800">
-          {singlePokemonQuery.data && !searchInput.includes(",") && (
-            <PokemonRow pokemon={singlePokemonQuery.data} />
-          )}
-
+        <>
+          <div className="mt-4 max-h-96 overflow-y-auto bg-gray-800">
+            {singlePokemonQuery.data && !searchInput.includes(",") && (
+              <div className="border border-gray-700 rounded-lg">
+                <PokemonRow pokemon={singlePokemonQuery.data} />
+              </div>
+            )}
+          </div>
           {multiplePokemonQuery.data && searchInput.includes(",") && (
             <PokedexTable pokemonArray={multiplePokemonQuery.data} />
           )}
-        </div>
+        </>
       );
     } else {
       return (
