@@ -6,10 +6,6 @@ import { z } from 'zod';
 const prisma = new PrismaClient();
 
 export const appRouter = router({
-    getPokemons: publicProcedure.query(async () => {
-        return await prisma.pokemon.findMany();
-    }),
-
     getPokemonByName: publicProcedure
         .input(z.string())
         .query(async (opts) => {
@@ -33,6 +29,22 @@ export const appRouter = router({
                 where: {
                     name: {
                         in: inputTitleCased
+                    }
+                }
+            });
+        }),
+
+    getPokemonByType: publicProcedure
+        .input(z.string())
+        .query(async (opts) => {
+            const { input } = opts;
+            if (input === 'all') {
+                return await prisma.pokemon.findMany();
+            }
+            return await prisma.pokemon.findMany({
+                where: {
+                    types: {
+                        has: input.toLowerCase()
                     }
                 }
             });

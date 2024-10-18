@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Outfit } from "next/font/google";
 import "./globals.css";
-import Provider from "@/components/Provider";
-import { Container } from "@mui/material";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+import Provider from "@/components/Provider";
+
+const poppins = Outfit({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Pokedex",
-  description: "Pokemon repository",
+  title: "PokéRepo",
+  description: "PokéRepo",
 };
 
 export default function RootLayout({
@@ -27,12 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Container>
-          <Provider>{children}</Provider>
-        </Container>
+      <body className={`${poppins.className} antialiased`}>
+        {/* <Container> */}
+        <Provider>{children}</Provider>
+        {/* </Container> */}
       </body>
     </html>
   );

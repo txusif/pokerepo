@@ -1,11 +1,9 @@
-import PokemonSearchForm from "@/components/PokemonSearchForm";
-import { Typography } from "@mui/material";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between p-24">
-      <Typography variant="h3">Welcome to the Pokedex</Typography>
-      <PokemonSearchForm />
+    <main className="w-full h-screen">
+      <Hero />
     </main>
   );
 }
