@@ -35,6 +35,11 @@ export default function Hero() {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+    setIsSearched(false);
+  };
+
   const renderSearchResults = () => {
     if (!isSearched) return null;
 
@@ -95,7 +100,7 @@ export default function Hero() {
                 <Input
                   type="text"
                   value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
+                  onChange={handleInputChange}
                   placeholder="Enter Pokemon name(s), separate multiple with commas"
                   className="bg-gray-700 text-white border-gray-600 flex-grow"
                 />
