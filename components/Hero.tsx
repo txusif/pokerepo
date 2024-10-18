@@ -43,6 +43,14 @@ export default function Hero() {
   const renderSearchResults = () => {
     if (!isSearched) return null;
 
+    if (singlePokemonQuery.isLoading || multiplePokemonQuery.isLoading) {
+      return (
+        <div className="mt-4 p-4 text-center text-gray-300 border border-gray-700 rounded-lg bg-gray-800">
+          Catching your Pokémon...
+        </div>
+      );
+    }
+
     if (
       singlePokemonQuery.data ||
       (multiplePokemonQuery.data && multiplePokemonQuery.data.length > 0)
