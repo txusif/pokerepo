@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PokéRepo
+
+PokéRepo is a web application that allows users to search and filter Pokémon by name or type.
+
+## Features
+
+- Search Pokémon by name
+- Filter Pokémon by type
+- View Pokémon name, type and image
+- Responsive design for various devices
+
+## Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- Prisma
+- tRPC
+- Tailwind CSS
+- Shadcn UI
 
 ## Getting Started
 
-First, run the development server:
+To get started with PokéRepo, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```
+   git clone https://github.com/txusif/pokerepo.git
+   cd pokerepo
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Install dependencies using pnpm:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```
+   pnpm install
+   ```
 
-## Learn More
+3. Create a .env file in the root directory and add your database URL:
 
-To learn more about Next.js, take a look at the following resources:
+   ```
+   DATABASE_URL=your_database_url_here
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the database migrations:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```
+   pnpm migrate
+   ```
 
-## Deploy on Vercel
+5. Add the prisma.seed field to your package.json file:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```json
+   {
+     "name": "my-project",
+     "version": "1.0.0",
+     "prisma": {
+       "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+     },
+     "devDependencies": {
+       "@types/node": "^14.14.21",
+       "ts-node": "^9.1.1",
+       "typescript": "^4.1.3"
+     }
+   }
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. Seed the database with initial data:
+
+   ```
+   npx prisma db seed
+   ```
+
+7. Run the development server:
+
+   ```
+   pnpm dev
+   ```
+
+8. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+## Scripts
+
+- `pnpm dev`: Runs the app in development mode
+- `pnpm migrate`: Runs Prisma migrations for the database
+- `pnpm generate`: Generates Prisma client based on the schema
+- `pnpm studio`: Opens Prisma Studio to manage your database through a web interface
+- `npx prisma db seed`: Seeds the database with initial data
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Author
+
+Toushief Ansari - [txusif@gmail.com](mailto:txusif@gmail.com)

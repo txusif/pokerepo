@@ -12,7 +12,18 @@ const poppins = Outfit({
 
 export const metadata: Metadata = {
   title: "PokéRepo",
-  description: "PokéRepo",
+  description:
+    "Search and filter Pokémon by name or type. Discover detailed information about your favorite Pokémon.",
+  keywords: [
+    "Pokémon",
+    "Pokedex",
+    "Pokémon database",
+    "Pokémon search",
+    "Pokémon types",
+  ],
+  authors: [{ name: "Toushief Ansari" }],
+  creator: "Toushief Ansari",
+  publisher: "Toushief Ansari txusif@gmail.com",
 };
 
 export default function RootLayout({
@@ -23,9 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>
-        {/* <Container> */}
         <Provider>{children}</Provider>
-        {/* </Container> */}
       </body>
     </html>
   );
